@@ -1,0 +1,56 @@
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  list-style: none;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* Main App */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.navbar-nav {
+  gap: 20px;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  color: white !important;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.nav-link i {
+  line-height: 1.5;
+}
+
+header .nav-link {
+  font-size: 1.15rem;
+}
