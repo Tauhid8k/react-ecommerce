@@ -54,3 +54,8 @@ a {
 header .nav-link {
   font-size: 1.15rem;
 }
+
+/* Footer */
+.footer {
+  margin-top: auto;
+}

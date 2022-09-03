@@ -21,12 +21,6 @@ const Header = () => {
                   </Badge>
                 </Nav.Link>
               </LinkContainer>
-              <LinkContainer to='/login'>
-                <Nav.Link>
-                  <i className='fa-solid fa-user'></i>
-                  Sign In
-                </Nav.Link>
-              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Container>
