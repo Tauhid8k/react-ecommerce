@@ -13,10 +13,14 @@ const HomeScreen = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get(
-          'https://joyous-goat-moccasins.cyclic.app/products'
-        );
-        dispatch(productActions.getAllProducts(data));
+        if (localStorage.getItem('products') === null) {
+          const { data } = await axios.get(
+            'https://joyous-goat-moccasins.cyclic.app/products'
+          );
+          localStorage.setItem('products', JSON.stringify(data));
+        }
+        const storedProducts = JSON.parse(localStorage.getItem('products'));
+        dispatch(productActions.getAllProducts(storedProducts));
       } catch (error) {
         dispatch(productActions.error('Something went wrong!'));
       }

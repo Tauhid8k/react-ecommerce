@@ -70,6 +70,10 @@ header .nav-link {
   width: auto;
 }
 
+.form-select {
+  padding: 0.75rem 2.5rem 0.75rem 1.5rem !important;
+}
+
 /* Cart */
 .add-to-cart-icon {
   cursor: pointer;
@@ -108,6 +112,11 @@ header .nav-link {
   border: 0;
   background-color: #ddd;
   padding: 2px 10px;
+}
+
+/* Rating */
+.rating span i {
+  color: tomato;
 }
 
 /* Footer */

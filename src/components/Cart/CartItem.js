@@ -20,17 +20,19 @@ const CartItem = ({ id, name, image, quantity, countInStock, total }) => {
 
   return (
     <Row className='align-items-center'>
-      <Col md={2}>
+      <Col md={2} className='mb-3 mb-md-0'>
         <Image src={image} alt={name} fluid rounded />
       </Col>
-      <Col md={4}>
+      <Col md={4} className='mb-0'>
         <h5>{name}</h5>
       </Col>
-      <Col md={2}>${total.toFixed(2)}</Col>
-      <Col md={2} className='text-center'>
+      <Col md={2} className='mb-3 mb-md-0 fw-bold'>
+        ${total.toFixed(2)}
+      </Col>
+      <Col xs={8} md={2} className='text-center'>
         <select
           name=''
-          className='form-select border-secondary'
+          className='form-select border-secondary text-center'
           value={quantity}
           onChange={(e) => quantitySelectUpdate(id, Number(e.target.value))}
         >
@@ -41,10 +43,10 @@ const CartItem = ({ id, name, image, quantity, countInStock, total }) => {
           ))}
         </select>
       </Col>
-      <Col md={2}>
+      <Col xs={4} md={2} className='d-flex'>
         <button
           type='button'
-          className='btn btn-light'
+          className='btn btn-danger fs-5 flex-grow-1 flex-md-grow-0'
           onClick={() => removeFromCartHandler(id)}
         >
           <i className='fa-solid fa-trash-can'></i>
