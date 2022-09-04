@@ -13,7 +13,9 @@ const HomeScreen = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get('/data/products.json');
+        const { data } = await axios.get(
+          'https://joyous-goat-moccasins.cyclic.app/products'
+        );
         dispatch(productActions.getAllProducts(data));
       } catch (error) {
         dispatch(productActions.error('Something went wrong!'));

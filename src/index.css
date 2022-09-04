@@ -55,6 +55,30 @@ header .nav-link {
   font-size: 1.15rem;
 }
 
+/* Products */
+.product-stock,
+.product-qty-cart {
+  display: flex;
+  gap: 5px;
+}
+
+.product-qty-cart {
+  gap: 15px;
+}
+
+.product-qty-cart .form-select {
+  width: auto;
+}
+
+/* Cart */
+.add-to-cart-icon {
+  cursor: pointer;
+  color: #444;
+}
+.add-to-cart-icon:active {
+  color: rgb(31, 155, 207);
+}
+
 /* Footer */
 .footer {
   margin-top: auto;
