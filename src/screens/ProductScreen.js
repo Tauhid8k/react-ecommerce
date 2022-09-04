@@ -4,6 +4,7 @@ import { Row, Col, Image, ListGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { productDetailActions } from '../redux/product/productDetailSlice';
 import Loader from '../components/Loader';
+import Rating from '../components/Rating';
 import axios from 'axios';
 
 const ProductScreen = () => {
@@ -50,6 +51,12 @@ const ProductScreen = () => {
               <ListGroup variant='flush'>
                 <ListGroup.Item>
                   <h2 className='mb-3'>{product.name}</h2>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Rating
+                    value={product.rating}
+                    text={`${product.numReviews} reviews`}
+                  />
                 </ListGroup.Item>
                 <ListGroup.Item>
                   <span className='fs-3 fw-bold'>Price: ${product.price}</span>
