@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import productsData from '../data/products';
 import { useDispatch, useSelector } from 'react-redux';
 import { Col, Row } from 'react-bootstrap';
 import Loader from '../components/Loader';
 import Product from '../components/Product';
+import axios from 'axios';
 import { productActions } from '../redux/product/productSlice';
 
 const HomeScreen = () => {
@@ -13,7 +13,8 @@ const HomeScreen = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        dispatch(productActions.getAllProducts(productsData));
+        const { data } = await axios.get('/data/products.json');
+        dispatch(productActions.getAllProducts(data));
       } catch (error) {
         dispatch(productActions.error('Something went wrong!'));
       }
