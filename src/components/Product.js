@@ -1,9 +1,33 @@
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../redux/cartSlice';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Product = ({ product }) => {
+  const dispatch = useDispatch();
+
+  const addToCartHandler = () => {
+    dispatch(
+      cartActions.addToCart({
+        id: product._id,
+        name: product.name,
+        image: product.image,
+        price: product.price,
+        countInStock: product.countInStock,
+      })
+    );
+    toast.info('Added to Cart');
+  };
+
   return (
     <>
+      <ToastContainer
+        autoClose={1000}
+        hideProgressBar={true}
+        position='bottom-right'
+        theme='dark'
+      />
       <Card className='my-3 p-2 rounded'>
         <Link to={`products/${product._id}`}>
           <Card.Img src={product.image} variant='top' />
@@ -22,7 +46,10 @@ const Product = ({ product }) => {
           >
             <h3>${product.price}</h3>
             {product.countInStock > 0 ? (
-              <span className='add-to-cart-icon fs-3 p-1'>
+              <span
+                className='add-to-cart-icon fs-3 p-1'
+                onClick={addToCartHandler}
+              >
                 <i className='fa-solid fa-cart-plus'></i>
               </span>
             ) : (

@@ -1,7 +1,10 @@
 import { Navbar, Container, Nav, Badge } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
+  const { totalQuantity } = useSelector((state) => state.cart);
+
   return (
     <header>
       <Navbar collapseOnSelect bg='dark' variant='dark' expand='lg'>
@@ -17,7 +20,7 @@ const Header = () => {
                   <i className='fa-solid fa-cart-shopping'></i>
                   Cart
                   <Badge pill bg='info' style={{ marginTop: '-11px' }}>
-                    0
+                    {totalQuantity}
                   </Badge>
                 </Nav.Link>
               </LinkContainer>

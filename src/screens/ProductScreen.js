@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Row, Col, Image, ListGroup } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { productDetailActions } from '../redux/product/productDetailSlice';
+import { cartActions } from '../redux/cartSlice';
+import { ToastContainer, toast } from 'react-toastify';
 import Loader from '../components/Loader';
 import Rating from '../components/Rating';
 import axios from 'axios';
@@ -31,8 +33,28 @@ const ProductScreen = () => {
     fetchProduct();
   }, [id, dispatch]);
 
+  const addToCartHandler = () => {
+    dispatch(
+      cartActions.addToCart({
+        id: product._id,
+        name: product.name,
+        image: product.image,
+        price: product.price,
+        quantity: qty,
+        countInStock: product.countInStock,
+      })
+    );
+    toast.info('Added to Cart');
+  };
+
   return (
     <>
+      <ToastContainer
+        autoClose={1000}
+        hideProgressBar={true}
+        position='bottom-right'
+        theme='dark'
+      />
       <div className='product'>
         <button className='btn btn-dark my-3' onClick={() => navigate(-1)}>
           Go Back
@@ -90,7 +112,11 @@ const ProductScreen = () => {
                       </option>
                     ))}
                   </select>
-                  <button className='btn btn-dark' type='button'>
+                  <button
+                    className='btn btn-dark'
+                    type='button'
+                    onClick={addToCartHandler}
+                  >
                     Add To Cart
                   </button>
                 </div>
